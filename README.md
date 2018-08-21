@@ -16,3 +16,4 @@ b2World.Step(1/scene.StepsPerSecond, scene.VelocityIterations, scene.PositionIte
 * [R.U.B.E Json format](https://www.iforce2d.net/rube/json-structure)
 * Loader for other languages https://github.com/iforce2d/b2dJson
 * Information about the original loader here http://www.iforce2d.net/b2djson
+* For an example of a debug drawer in OpenGL, you can look [here](https://github.com/maxfish/gojira2d/blob/master/pkg/physics/box2d_debug_draw.go)
