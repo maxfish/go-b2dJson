@@ -29,7 +29,7 @@ type B2DJsonScene struct {
 }
 
 // NewB2DJsonSceneFromFile Loads the scene from an exported JSON file
-func NewB2DJsonSceneFromFile(fileName string) *B2DJsonScene {
+func NewB2DJsonSceneFromFile(fileName string, world *box2d.B2World) *B2DJsonScene {
 	scene := &B2DJsonScene{}
 	scene.indexToBody = make(map[int]*box2d.B2Body)
 	scene.bodyToName = make(map[*box2d.B2Body]string)
@@ -62,7 +62,10 @@ func NewB2DJsonSceneFromFile(fileName string) *B2DJsonScene {
 	scene.StepsPerSecond = scene.loadedData.StepsPerSecond
 
 	// Build the Box2D objects
-	scene.World = scene.buildWorld()
+	scene.World = world
+	if world == nil {
+		scene.World = scene.buildWorld()
+	}
 	scene.loadWorld()
 
 	return scene
