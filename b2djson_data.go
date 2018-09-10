@@ -113,8 +113,8 @@ type B2DImageData struct {
 	Flip        bool            `json:"flip"`        // true if the texture should be reversed horizontally
 
 	ColorTint         []int                    `json:"colorTint"`         // RGBA values for color tint, if not 255,255,255,255
-	GlDrawElements    []int                    `json:"glDrawElements"`    //Indices for drawing GL_TRIANGLES with the glDrawElements function and the other glXXX properties below
-	GlTexCoordPointer []float64                `json:"glTexCoordPointer"` //Texture coordinates for use with glTexCoordPointer (the 'flip' property has already been taken into account)
+	GlDrawElements    []int                    `json:"glDrawElements"`    // Indices for drawing GL_TRIANGLES with the glDrawElements function and the other glXXX properties below
+	GlTexCoordPointer []float64                `json:"glTexCoordPointer"` // Texture coordinates for use with glTexCoordPointer (the 'flip' property has already been taken into account)
 	GlVertexPointer   []float64                `json:"glVertexPointer"`   // Vertex positions for use with glVertexPointer
 	CustomProperties  *[]B2DCustomPropertyData `json:"customProperties"`
 }
