@@ -76,6 +76,13 @@ func (s *B2DJsonScene) BodyForName(name string) *box2d.B2Body {
 	return s.nameToBody[name]
 }
 
+func (s *B2DJsonScene) BodyFromIndex(index int) *box2d.B2Body {
+	if index < 0 || index >= len(s.bodies) {
+		return nil
+	}
+	return s.indexToBody[index]
+}
+
 func (s *B2DJsonScene) FixtureForName(name string) *box2d.B2Fixture {
 	return s.nameToFixture[name]
 }
@@ -105,6 +112,10 @@ func (s *B2DJsonScene) SceneBoundingBoxInPixels(pixelPerMeter float64) box2d.B2A
 	bb.UpperBound.X *= pixelPerMeter
 	bb.UpperBound.Y *= pixelPerMeter
 	return bb
+}
+
+func (s *B2DJsonScene) Images() []B2DImageData {
+	return s.loadedData.Images
 }
 
 func (s *B2DJsonScene) buildWorld() *box2d.B2World {
