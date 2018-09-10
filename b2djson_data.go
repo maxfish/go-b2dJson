@@ -17,9 +17,9 @@ type B2DJsonWorld struct {
 	ContinuousPhysics  bool                      `json:"continuousPhysics"`
 	Collisionbitplanes B2DCollisionBitplanesData `json:"collisionbitplanes"`
 
-	Bodies           []B2DBodyData            `json:"body"`
-	Images           []B2DImageData           `json:"image"`
-	Joints           []B2DJointData           `json:"joint"`
+	Bodies           []*B2DBodyData            `json:"body"`
+	Images           []*B2DImageData          `json:"image"`
+	Joints           []*B2DJointData           `json:"joint"`
 	CustomProperties *[]B2DCustomPropertyData `json:"customProperties"`
 }
 
@@ -41,7 +41,7 @@ type B2DBodyData struct {
 	GravityScale    *float64    `json:"gravityScale"`
 	Position        B2DVector2D `json:"position"`
 
-	Fixture          []B2DFixtureData         `json:"fixture"`
+	Fixture          []*B2DFixtureData         `json:"fixture"`
 	CustomProperties *[]B2DCustomPropertyData `json:"customProperties"`
 }
 

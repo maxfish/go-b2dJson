@@ -114,8 +114,8 @@ func (s *B2DJsonScene) SceneBoundingBoxInPixels(pixelPerMeter float64) box2d.B2A
 	return bb
 }
 
-func (s *B2DJsonScene) Images() []B2DImageData {
-	return s.loadedData.Images
+func (s *B2DJsonScene) Images() *[]*B2DImageData {
+	return &s.loadedData.Images
 }
 
 func (s *B2DJsonScene) buildWorld() *box2d.B2World {
@@ -162,7 +162,7 @@ func (s *B2DJsonScene) loadWorld() {
 
 	for i := 0; i < len(w.Bodies); i++ {
 		bodyData := w.Bodies[i]
-		body := s.buildBody(&bodyData)
+		body := s.buildBody(bodyData)
 		s.loadCustomProperties(body, bodyData.CustomProperties)
 
 		// Get the body's name and handles duplicates
@@ -184,7 +184,7 @@ func (s *B2DJsonScene) loadWorld() {
 	// only the gears. Gear joints reference other joins.
 	for i := 0; i < len(w.Joints); i++ {
 		jointData := w.Joints[i]
-		joint := s.buildJoint(&jointData)
+		joint := s.buildJoint(jointData)
 		s.loadCustomProperties(joint, jointData.CustomProperties)
 
 		// Get the joint's name and handles duplicates
@@ -224,7 +224,7 @@ func (s *B2DJsonScene) buildBody(data *B2DBodyData) *box2d.B2Body {
 
 	for i := 0; i < len(data.Fixture); i++ {
 		fixtureData := data.Fixture[i]
-		fixture := s.buildFixture(b2Body, &fixtureData)
+		fixture := s.buildFixture(b2Body, fixtureData)
 		s.loadCustomProperties(fixture, fixtureData.CustomProperties)
 	}
 
