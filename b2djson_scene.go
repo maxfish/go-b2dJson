@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
 	"github.com/ByteArena/box2d"
 )
 
@@ -148,8 +149,8 @@ func (s *B2DJsonScene) loadCustomProperties(object interface{}, jsonData *[]B2DC
 func (s *B2DJsonScene) loadWorld() {
 	w := s.loadedData
 
-	for i := 0; i < len(w.Body); i++ {
-		bodyData := w.Body[i]
+	for i := 0; i < len(w.Bodies); i++ {
+		bodyData := w.Bodies[i]
 		body := s.buildBody(&bodyData)
 		s.loadCustomProperties(body, bodyData.CustomProperties)
 
@@ -170,8 +171,8 @@ func (s *B2DJsonScene) loadWorld() {
 	// NOTE: R.U.B.E doesn't support Gear joints. To support them in this loader
 	// two loops are needed. The first one should parse all the non-gear joints and the second
 	// only the gears. Gear joints reference other joins.
-	for i := 0; i < len(w.Joint); i++ {
-		jointData := w.Joint[i]
+	for i := 0; i < len(w.Joints); i++ {
+		jointData := w.Joints[i]
 		joint := s.buildJoint(&jointData)
 		s.loadCustomProperties(joint, jointData.CustomProperties)
 

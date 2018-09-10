@@ -17,9 +17,9 @@ type B2DJsonWorld struct {
 	ContinuousPhysics  bool                      `json:"continuousPhysics"`
 	Collisionbitplanes B2DCollisionBitplanesData `json:"collisionbitplanes"`
 
-	Body             []B2DBodyData            `json:"body"`
-	Image            []B2DImageData           `json:"image"`
-	Joint            []B2DJointData           `json:"joint"`
+	Bodies           []B2DBodyData            `json:"body"`
+	Images           []B2DImageData           `json:"image"`
+	Joints           []B2DJointData           `json:"joint"`
 	CustomProperties *[]B2DCustomPropertyData `json:"customProperties"`
 }
 
